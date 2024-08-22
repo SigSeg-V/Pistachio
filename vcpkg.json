@@ -1,0 +1,17 @@
+{
+  "dependencies" : [ {
+    "name" : "imgui",
+    "version>=" : "1.90",
+    "default-features" : false,
+    "features" : [ "docking-experimental", "vulkan-binding", "glfw-binding" ]
+  }, {
+    "name" : "glfw3",
+    "version>=" : "3.4"
+  }, {
+    "name" : "stb",
+    "version>=" : "2023-04-11#1"
+  }, {
+    "name" : "glm",
+    "version>=" : "1.0.1#3"
+  } ]
+}

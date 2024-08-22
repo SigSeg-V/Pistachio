@@ -4,8 +4,8 @@
 // Adapted from Dear ImGui Vulkan example
 //
 
-#include "backends/imgui_impl_glfw.h"
-#include "backends/imgui_impl_vulkan.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_vulkan.h"
 #include <stdio.h>          // printf, fprintf
 #include <stdlib.h>         // abort
 #define GLFW_INCLUDE_NONE
@@ -17,7 +17,7 @@
 #include <iostream>
 
 // Emedded font
-#include "ImGui/Roboto-Regular.embed"
+#include "Pistachio/Roboto-Regular.h"
 
 extern bool g_ApplicationRunning;
 
@@ -55,7 +55,7 @@ static std::vector<std::vector<std::function<void()>>> s_ResourceFreeQueue;
 // and is always guaranteed to increase (eg. 0, 1, 2, 0, 1, 2)
 static uint32_t s_CurrentFrameIndex = 0;
 
-static Walnut::Application* s_Instance = nullptr;
+static Pistachio::Application* s_Instance = nullptr;
 
 void check_vk_result(VkResult err)
 {
@@ -382,7 +382,7 @@ static void glfw_error_callback(int error, const char* description)
 	fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-namespace Walnut {
+namespace Pistachio {
 
 	Application::Application(const ApplicationSpecification& specification)
 		: m_Specification(specification)
@@ -480,7 +480,8 @@ namespace Walnut {
 		init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
 		init_info.Allocator = g_Allocator;
 		init_info.CheckVkResultFn = check_vk_result;
-		ImGui_ImplVulkan_Init(&init_info, wd->RenderPass);
+		init_info.RenderPass = wd-> RenderPass;
+		ImGui_ImplVulkan_Init(&init_info);
 
 		// Load default font
 		ImFontConfig fontConfig;
@@ -502,7 +503,7 @@ namespace Walnut {
 			err = vkBeginCommandBuffer(command_buffer, &begin_info);
 			check_vk_result(err);
 
-			ImGui_ImplVulkan_CreateFontsTexture(command_buffer);
+			ImGui_ImplVulkan_CreateFontsTexture();
 
 			VkSubmitInfo end_info = {};
 			end_info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -515,7 +516,6 @@ namespace Walnut {
 
 			err = vkDeviceWaitIdle(g_Device);
 			check_vk_result(err);
-			ImGui_ImplVulkan_DestroyFontUploadObjects();
 		}
 	}
 

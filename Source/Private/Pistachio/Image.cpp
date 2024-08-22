@@ -1,14 +1,14 @@
 #include "Image.h"
 
 #include "imgui.h"
-#include "backends/imgui_impl_vulkan.h"
+#include "imgui_impl_vulkan.h"
 
 #include "Application.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-namespace Walnut {
+namespace Pistachio {
 
 	namespace Utils {
 
@@ -35,7 +35,7 @@ namespace Walnut {
 			return 0;
 		}
 		
-		static VkFormat WalnutFormatToVulkanFormat(ImageFormat format)
+		static VkFormat PistachioFormatToVulkanFormat(ImageFormat format)
 		{
 			switch (format)
 			{
@@ -91,7 +91,7 @@ namespace Walnut {
 
 		VkResult err;
 		
-		VkFormat vulkanFormat = Utils::WalnutFormatToVulkanFormat(m_Format);
+		VkFormat vulkanFormat = Utils::PistachioFormatToVulkanFormat(m_Format);
 
 		// Create the Image
 		{

@@ -1,10 +1,10 @@
-#include "Input.h"
+#include "Input/Input.h"
 
-#include "Walnut/Application.h"
+#include "Application.h"
 
 #include <GLFW/glfw3.h>
 
-namespace Walnut {
+namespace Pistachio {
 
 	bool Input::IsKeyDown(KeyCode keycode)
 	{

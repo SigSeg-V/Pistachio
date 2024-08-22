@@ -4,7 +4,7 @@
 
 #include "vulkan/vulkan.h"
 
-namespace Walnut {
+namespace Pistachio {
 
 	enum class ImageFormat
 	{
