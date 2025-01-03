@@ -1,6 +1,6 @@
 # Pistachio
 
-Pistachio is a fork of [Walnut](https://github.com/StudioCherno/Walnut) to provide cross-platform support and an up-to-date version of ImGui. Pistachio uses ImGui and Vulkan to allow the user to render GPU accelerated  viewports, useful for highly interactive or graphics-basde applications.
+Pistachio is a fork of [Walnut](https://github.com/StudioCherno/Walnut) to provide cross-platform support and an up-to-date version of ImGui. Pistachio uses ImGui and Vulkan to allow the user to render GPU accelerated viewports, useful for highly interactive or graphics-base applications.
 
 ## Requirements
 - CMake >= 3.29
